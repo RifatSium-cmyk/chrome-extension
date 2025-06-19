@@ -1,0 +1,16 @@
+# Secrets and tokens
+.env
+config.js
+
+# VS Code settings
+.vscode/
+
+# Node dependencies (if used)
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Log files
+*.log
