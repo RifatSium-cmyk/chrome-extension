@@ -1,0 +1,711 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    width: 320px;
+    min-height: 480px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.glass-container {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.background-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    top: -20px;
+    right: -20px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+    bottom: 20px;
+    left: -10px;
+    animation-delay: 2s;
+}
+
+.orb-3 {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    top: 50%;
+    right: -10px;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(120deg); }
+    66% { transform: translateY(5px) rotate(240deg); }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.logo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(26, 115, 232, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 1;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.5; }
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.title-underline {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    margin: 0 auto;
+    border-radius: 1px;
+}
+
+.auth-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.auth-description {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.input-wrapper input:focus {
+    border-color: rgba(102, 126, 234, 0.5);
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.input-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.input-wrapper input:focus + .input-glow {
+    opacity: 1;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 18px;
+    width: 18px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-right: 8px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-text {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+}
+
+.checkbox-container.small .checkmark {
+    height: 16px;
+    width: 16px;
+}
+
+.checkbox-container.small .checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 3px;
+    height: 7px;
+}
+
+.checkbox-container.small .checkbox-text {
+    font-size: 12px;
+}
+
+.remember-me-container {
+    margin-bottom: 20px;
+}
+
+.primary-button {
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.primary-button:hover .button-glow {
+    left: 100%;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 16px;
+}
+
+.auth-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.admin-button {
+    width: 100%;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.admin-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+}
+
+.message {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #ff6b6b;
+    min-height: 1.2em;
+    font-weight: 500;
+}
+
+.sign-out-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 107, 107, 0.8);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sign-out-button:hover {
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+}
+
+.main-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.toggle-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.toggle-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: all 0.3s ease;
+}
+
+.status-indicator.active {
+    background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+.modern-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+}
+
+.modern-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: 0.4s;
+    border-radius: 28px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.switch-handle {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modern-switch input:checked + .switch-slider {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+}
+
+.modern-switch input:checked + .switch-slider .switch-handle {
+    transform: translateX(24px);
+}
+
+.feature-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+}
+
+.feature-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.feature-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.reset-button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.reset-button:hover {
+    background: rgba(255, 107, 107, 0.8);
+    color: white;
+    transform: rotate(180deg);
+}
+
+.reset-icon {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.feature-button {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.feature-button:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.feature-button:active .button-ripple {
+    width: 100px;
+    height: 100px;
+}
+
+.highlight-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding: 8px 0;
+}
+
+.info-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.info-tooltip:hover .info-icon {
+    background: #667eea;
+    color: white;
+}
+
+.feedback-section {
+    margin-top: auto;
+}
+
+.feedback-button {
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feedback-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
+}

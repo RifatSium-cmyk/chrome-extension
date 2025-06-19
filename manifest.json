@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "QuizWhiz",
+  "version": "5.0",
+  "description": "An AI assistant that can read text and screenshot-based quizzes.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:4000/*",
+    "http://127.0.0.1:5000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "chrome_extension_script.js"
+      ],
+      "css": [
+        "overlay_styles.css"
+      ],
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "overlay_styles.css",
+        "loading_overlay.css",
+        "temporary_message.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

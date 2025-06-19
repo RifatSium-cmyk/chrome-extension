@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QuizWhiz</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- The Authentication container is unchanged -->
+        <div id="authContainer" class="hidden">
+            <div class="header">
+                <img src="icons/icon48.png" alt="QuizWhiz Logo">
+                <h1>QuizWhiz</h1>
+            </div>
+            <div id="signInView">
+                <p class="auth-description">Please sign in to continue.</p>
+                <div class="input-group">
+                    <input type="email" id="signInEmail" placeholder="Email" autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signInPassword" placeholder="Password" autocomplete="current-password">
+                </div>
+                <button id="signInBtn" class="link-button full-width">Sign In</button>
+                <p class="auth-switch">Don't have an account? <a href="#" id="showSignUp">Sign Up</a></p>
+            </div>
+            <div id="signUpView" class="hidden">
+                <p class="auth-description">Create a new account.</p>
+                <div class="input-group">
+                    <input type="email" id="signUpEmail" placeholder="Email" autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signUpPassword" placeholder="Password" autocomplete="new-password">
+                </div>
+                <button id="signUpBtn" class="link-button full-width">Sign Up</button>
+                <p class="auth-switch">Already have an account? <a href="#" id="showSignIn">Sign In</a></p>
+            </div>
+            <p id="authMessage" class="message"></p>
+        </div>
+
+        <!-- The main application view is updated -->
+        <div id="appView">
+            <div class="header">
+                 <img src="icons/icon48.png" alt="QuizWhiz Logo">
+                 <h1>QuizWhiz</h1>
+                 <button id="signOutBtn" class="sign-out-button" title="Sign Out">Sign Out</button>
+            </div>
+            <div id="hotkey-warning" class="hotkey-warning hidden">
+                Hotkey setup needed! <a href="#" id="fix-hotkey-link">Click here to fix.</a>
+            </div>
+            <div class="toggle-container">
+                <span>Tool Enabled</span>
+                <label class="switch">
+                    <input type="checkbox" id="enableToggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="links">
+                <div class="button-group">
+                    <button id="snipQuestionBtn" class="link-button">Snip Question Area</button>
+                    <button id="resetSnipBtn" class="reset-button" title="Reset Snip Area">↺</button>
+                </div>
+                <div class="button-group">
+                    <button id="selectElementBtn" class="link-button">Teach Text Area</button>
+                    <button id="resetElementBtn" class="reset-button" title="Reset Text Area">↺</button>
+                </div>
+                <a href="mailto:your-feedback-email@example.com?subject=Feedback for QuizWhiz" target="_blank" class="link-button">Send Feedback</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assumes supabase.js exists in your project folder -->
+    <script src="supabase.js"></script> 
+    <script src="popup.js"></script>
+</body>
+</html>

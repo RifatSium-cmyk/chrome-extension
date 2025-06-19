@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QuizWhiz</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="glass-container">
+        <div class="background-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        
+        <div class="container">
+            <div id="authContainer">
+                <div class="header">
+                    <div class="logo-container">
+                        <div class="logo-glow"></div>
+                        <img src="icons/icon48.png" alt="QuizWhiz Logo" class="logo">
+                    </div>
+                    <h1 class="app-title">QuizWhiz</h1>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div id="signInView" class="auth-view">
+                    <div class="auth-card">
+                        <p class="auth-description">Welcome back! Sign in to continue your learning journey.</p>
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="email" id="signInEmail" placeholder="Email" autocomplete="email">
+                                <div class="input-glow"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="password" id="signInPassword" placeholder="Password" autocomplete="current-password">
+                                <div class="input-glow"></div>
+                            </div>
+                        </div>
+                        <div class="remember-me-container">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="rememberMe" checked>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Remember me</span>
+                            </label>
+                        </div>
+                        <button id="signInBtn" class="primary-button">
+                            <span class="button-text">Sign In</span>
+                            <div class="button-glow"></div>
+                        </button>
+                        <p class="auth-switch">Don't have an account? <a href="#" id="showSignUp" class="auth-link">Sign Up</a></p>
+                        <button id="adminLoginBtn" class="admin-button">
+                            <span class="button-text">Admin Login (Debug)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="signUpView" class="auth-view hidden">
+                    <div class="auth-card">
+                        <p class="auth-description">Join QuizWhiz and start your learning adventure!</p>
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="email" id="signUpEmail" placeholder="Email" autocomplete="email">
+                                <div class="input-glow"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="password" id="signUpPassword" placeholder="Password" autocomplete="new-password">
+                                <div class="input-glow"></div>
+                            </div>
+                        </div>
+                        <button id="signUpBtn" class="primary-button">
+                            <span class="button-text">Sign Up</span>
+                            <div class="button-glow"></div>
+                        </button>
+                        <p class="auth-switch">Already have an account? <a href="#" id="showSignIn" class="auth-link">Sign In</a></p>
+                    </div>
+                </div>
+                
+                <div id="authMessage" class="message"></div>
+            </div>
+
+            <div id="appView" class="hidden">
+                <div class="header">
+                    <div class="logo-container">
+                        <div class="logo-glow"></div>
+                        <img src="icons/icon48.png" alt="QuizWhiz Logo" class="logo">
+                    </div>
+                    <h1 class="app-title">QuizWhiz</h1>
+                    <button id="signOutBtn" class="sign-out-button" title="Sign Out">
+                        <span>Sign Out</span>
+                    </button>
+                </div>
+                
+                <div class="main-controls">
+                    <div class="toggle-card">
+                        <div class="toggle-content">
+                            <div class="toggle-info">
+                                <span class="toggle-label">Tool Enabled</span>
+                                <div class="status-indicator" id="statusIndicator"></div>
+                            </div>
+                            <label class="modern-switch">
+                                <input type="checkbox" id="enableToggle">
+                                <span class="switch-slider">
+                                    <span class="switch-handle"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <h3>Question Capture</h3>
+                                <button id="resetSnipBtn" class="reset-button" title="Reset Snip Area">
+                                    <span class="reset-icon">↺</span>
+                                </button>
+                            </div>
+                            <button id="snipQuestionBtn" class="feature-button">
+                                <span class="button-text">Snip Question Area</span>
+                                <div class="button-ripple"></div>
+                            </button>
+                            <div class="highlight-option">
+                                <label class="checkbox-container small">
+                                    <input type="checkbox" id="highlightToggle">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Highlight question area</span>
+                                </label>
+                                <div class="info-tooltip" title="This option highlights the question area for 3 seconds. If the highlight is off, please choose the question area again.">
+                                    <span class="info-icon">i</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <h3>Text Area</h3>
+                                <button id="resetElementBtn" class="reset-button" title="Reset Text Area">
+                                    <span class="reset-icon">↺</span>
+                                </button>
+                            </div>
+                            <button id="selectElementBtn" class="feature-button">
+                                <span class="button-text">Teach Text Area</span>
+                                <div class="button-ripple"></div>
+                            </button>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <h3>Screenshot</h3>
+                                <button id="resetOcrElementBtn" class="reset-button" title="Reset Screenshot Element">
+                                    <span class="reset-icon">↺</span>
+                                </button>
+                            </div>
+                            <button id="defineOcrElementBtn" class="feature-button">
+                                <span class="button-text">Teach Screenshot Element</span>
+                                <div class="button-ripple"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feedback-section">
+                        <a href="mailto:your-feedback-email@example.com?subject=Feedback for QuizWhiz" target="_blank" class="feedback-button">
+                            <span class="button-text">Send Feedback</span>
+                            <div class="button-glow"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="supabase.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
